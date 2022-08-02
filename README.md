@@ -1,15 +1,15 @@
 # MatKoranda-ToDo
-Basic structure:
-  -controllers<br />  
-     -Authorization - manages the register and login<br />
-     -ToDo - manages the ToDos<br />
-  -models:<br />
-     -User - user entity structure<br />
-     -ToDoTask - task entity structure<br />
-  -services<br />
-     -TokenService - manages Tokens<br />
-     -UserService - manages Users<br />
-     -ToDoService - manages ToDoTaks<br />
+Basic structure:<br /> 
+- controllers<br />  
+  - Authorization - manages the register and login<br />
+  - ToDo - manages the ToDos<br />
+- models:<br />
+  - User - user entity structure<br />
+  - ToDoTask - task entity structure<br />
+- services<br />
+  - TokenService - manages Tokens<br />
+  - UserService - manages Users<br />
+  - ToDoService - manages ToDoTaks<br />
  #How to deploy
  1) Create account on Azure
  2) Create new database 
