@@ -18,7 +18,8 @@ Basic structure:<br />
  4) update DB
  5) update your repo
  6) Create new web app in Azure
-    -choose your GitHub repository
-    -let the app upload
-    -to include CD, check the continuous deployment (you have to fix YML file thats automatically created in your workflow folder)
+    - choose your GitHub repository
+    - let the app upload
+    - to include CD, check the continuous deployment (you have to fix YML file thats automatically created in your workflow folder)
+    - 
 with this, every merge into Master will call this action and automatically update the deployed app on Azure!
