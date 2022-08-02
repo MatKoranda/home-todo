@@ -10,7 +10,8 @@ Basic structure:<br />
   - TokenService - manages Tokens<br />
   - UserService - manages Users<br />
   - ToDoService - manages ToDoTaks<br />
- #How to deploy
+
+##How to deploy
  1) Create account on Azure
  2) Create new database 
  3) Import ConnectionString from your new AzureDB into 'appsettings.json' (fill in admin-username and password!)
