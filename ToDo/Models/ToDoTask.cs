@@ -1,10 +1,12 @@
-﻿namespace ToDo.Models
+﻿using System.Text.Json.Serialization;
+
+namespace ToDo.Models
 {
     public class ToDoTask
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public bool IsDone { get; set; }
+        public bool IsDone { get; set; } = false;
         public int UserId { get; set; }
         public User User { get; set; }
 

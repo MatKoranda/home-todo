@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using ToDo.Models;
+using ToDo.Models.DTOs;
+using ToDo.Services;
 
 namespace ToDo.Controllers
 {
@@ -10,31 +11,50 @@ namespace ToDo.Controllers
     [ApiController]
     public class ToDoController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly TokenService tokenService;
+        private readonly ToDoService toDoService;
+
+        public ToDoController(TokenService tokenService, ToDoService toDoService)
         {
-            return new string[] { "value1", "value2" };
+            this.tokenService = tokenService;
+            this.toDoService = toDoService;
+
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+        [HttpGet]
+        public IActionResult Get()
         {
-            return "value";
+            User user = tokenService.GetLoggedInUser();
+            return Ok(toDoService.GetToDos(user));
         }
+
+
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] AddToDoDTO toDoDTO)
         {
+            User user = tokenService.GetLoggedInUser();
+            ResponseMessage responseMessage = toDoService.AddToDo(toDoDTO, user);
+            return Ok(responseMessage);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{toDoId}")]
+        public IActionResult Put(int toDoId, [FromBody] UpdateToDoDTO toDoDTO)
         {
+            User user = tokenService.GetLoggedInUser();
+            ResponseMessage responseMessage = toDoService.UpdateToDo(toDoId, toDoDTO, user, out bool isValid);
+            if (!isValid)
+            {
+                return BadRequest(responseMessage);
+            }
+            return Ok(responseMessage);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            User user = tokenService.GetLoggedInUser();
         }
     }
 }

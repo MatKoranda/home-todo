@@ -9,12 +9,10 @@ namespace ToDo.Services
     public class UserService
     {
         private AppDbContext database { get; set; }
-        private readonly TokenService tokenService;
 
-        public UserService(AppDbContext database, TokenService tokenService)
+        public UserService(AppDbContext database)
         {
             this.database = database;
-            this.tokenService = tokenService;
         }
         public ResponseMessage RegisterUser(AuthDTO authDTO, out bool isValid)
         {
@@ -30,18 +28,7 @@ namespace ToDo.Services
             isValid = true;
             return new ResponseMessage("User was successfuly registered");
         }
-        public ResponseMessage LoginUser(AuthDTO userDTO, out bool isValid)
-        {
-            User user = GetUserByEmail(userDTO.Email);
-            if (!user.PasswordCheck(userDTO.Password))
-            {
-                isValid = false;
-                return new ResponseMessage("Invalid credentials");
-            }
-            string JWT = tokenService.CreateLoginToken(user);
-            isValid = true;
-            return new ResponseMessage($"bearer {JWT}");
-        }
+        
 
         public User GetUserById(int userId)
         {

@@ -35,7 +35,7 @@ namespace ToDo.Controllers
         [Route("Login")]
         public IActionResult Login([FromBody] AuthDTO authDTO)
         {
-            ResponseMessage responseMessage = userService.LoginUser(authDTO, out bool isValid);
+            ResponseMessage responseMessage = tokenService.LoginUser(authDTO, out bool isValid);
             if (!isValid)
             {
                 return BadRequest(responseMessage);
