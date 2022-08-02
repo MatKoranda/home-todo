@@ -1,6 +1,6 @@
 # MatKoranda-ToDo
 Basic structure:
-  -controllers<br />
+  -controllers<br />  
      -Authorization - manages the register and login<br />
      -ToDo - manages the ToDos<br />
   -models:<br />
