@@ -44,7 +44,7 @@ namespace ToDo.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ToDoTask");
+                    b.ToTable("ToDoTasks");
                 });
 
             modelBuilder.Entity("ToDo.Models.User", b =>
@@ -69,7 +69,7 @@ namespace ToDo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ToDo.Models.ToDoTask", b =>

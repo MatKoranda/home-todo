@@ -12,7 +12,7 @@ using ToDo.Database;
 namespace ToDo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220801124535_init")]
+    [Migration("20220801192505_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace ToDo.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ToDoTask");
+                    b.ToTable("ToDoTasks");
                 });
 
             modelBuilder.Entity("ToDo.Models.User", b =>
@@ -71,7 +71,7 @@ namespace ToDo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ToDo.Models.ToDoTask", b =>

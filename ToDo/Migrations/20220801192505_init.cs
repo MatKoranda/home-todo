@@ -10,7 +10,7 @@ namespace ToDo.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,11 +21,11 @@ namespace ToDo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ToDoTask",
+                name: "ToDoTasks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,28 +36,28 @@ namespace ToDo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ToDoTask", x => x.Id);
+                    table.PrimaryKey("PK_ToDoTasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ToDoTask_User_UserId",
+                        name: "FK_ToDoTasks_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ToDoTask_UserId",
-                table: "ToDoTask",
+                name: "IX_ToDoTasks_UserId",
+                table: "ToDoTasks",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ToDoTask");
+                name: "ToDoTasks");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }
