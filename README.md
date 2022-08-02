@@ -21,5 +21,5 @@ Basic structure:<br />
     - choose your GitHub repository
     - let the app upload
     - to include CD, check the continuous deployment (you have to fix YML file thats automatically created in your workflow folder)
-    - 
-with this, every merge into Master will call this action and automatically update the deployed app on Azure!
+
+with this every merge into Master will call this action and automatically update the deployed app on Azure!
